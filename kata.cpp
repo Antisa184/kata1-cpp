@@ -86,7 +86,6 @@ vector<magazine*> magazines;
 vector<readingMaterial*> readables;
 
 void readAuthors(fstream& file){
-    //cout<<"AUTHORS";
     string tp;
     vector<string> tpVector;
     while(getline(file, tp)){
@@ -111,7 +110,6 @@ void readBooks(fstream& file){
         newBook->description=tpVector[3];
         books.push_back(newBook);
         readables.push_back(newBook);
-        //cout<<newBook->toString();
     }
 }
 void readMagazines(fstream& file){
@@ -126,7 +124,6 @@ void readMagazines(fstream& file){
         newMagazine->publishedAt=tpVector[3];
         magazines.push_back(newMagazine);
         readables.push_back(newMagazine);
-        //cout<<newMagazine->toString();
     }
 }
 bool compareReadingMaterialByTitle(const readingMaterial* a, const readingMaterial* b)
@@ -141,12 +138,10 @@ void printReadingMaterial(vector<readingMaterial*> readables, int mode=1, string
     for (auto r: readables) {
         if( (mode==1 || mode==4) || (mode==2 && r->isbn==param) || (mode==3 && find(r->authors.begin(), r->authors.end(), param)!=r->authors.end())){
             if (book *d = dynamic_cast<book*>(r)) {
-                //cout<<"knjiga\n";
                 cout<<d->toString();
                 cout<<"\n\n";
             }
             if (magazine *d = dynamic_cast<magazine*>(r)) {
-                //cout<<"magazin\n";
                 cout<<d->toString();
                 cout<<"\n\n";
             }
@@ -168,7 +163,6 @@ int main(){
         string tp;
         getline(file,tp); //read first line to determine type of data
 
-        //cout<<split(tp,";")[0].size()<<"\n";
         if(split(tp,";")[2]==split(authorsFirstLine,";")[2]) readAuthors(file);
         if(split(tp,";")[3]==split(booksFirstLine,";")[3]) readBooks(file);
         if(split(tp,";")[3]==split(magazinesFirstLine,";")[3]) readMagazines(file);
