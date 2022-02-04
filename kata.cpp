@@ -161,7 +161,7 @@ int main(){
     setvbuf(stdout, nullptr, _IOFBF, 1000);
 
     fstream file;
-    string path = "C:/Users/antis/Desktop/intervju/data/";
+    string path = "data/";
     for(const auto & entry : fs::directory_iterator(path)) //iterate all files in folder
     {
         file.open(entry.path(),ios::in);
