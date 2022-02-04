@@ -1,0 +1,1 @@
+Start kata.exe
